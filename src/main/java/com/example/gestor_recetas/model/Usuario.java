@@ -28,7 +28,4 @@ public class Usuario {
   @JsonManagedReference
   // Para tabla usuario
   private List<Receta> receta = new ArrayList<>();
-  @JsonManagedReference
-  // Para tabla usuario
-  private List<Receta> receta = new ArrayList<>();
 }

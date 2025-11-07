@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Usuarioservice {
+public class UsuarioService {
   @Autowired
   private RecetaRepository recetaRepository;
   @Autowired
@@ -21,10 +21,10 @@ public class Usuarioservice {
 
   //POST
   public Usuario guardarUsuario(Usuario usuario){
-  Integer recetaId = usuario.getUsuario().getId();
+  Integer recetaId = usuario.getReceta().getId();
   Receta receta = recetaRepository.findById(recetaId)
-    .orElseThrow(() -> new ResourceNotFoundException("Receta no encontrada con ID: " + idUsuario));
-  usuario.setUsuario(usuario);
+    .orElseThrow(() -> new ResourceNotFoundException("Receta no encontrada con ID: " + idReceta));
+  Usuario.setReceta(receta);
   return usuarioRepository.save(usuario);
 }
   // GET ALL
@@ -46,8 +46,8 @@ public Usuario actualizarUsuario(Integer id, Usuario detalles) {
     usuarioExistente.setRedes(detalles.getRedes());
 
     if (detalles.getReceta() != null && detalles.getReceta().getId() != null) {
-      Integer nuevoRecetaId = detalles.getReceta().getId();
-      Receta nuevoReceta = recetaRepository.findById(nuevaRecetaId)
+      Integer nuevaRecetaId = detalles.getReceta().getId();
+      Receta nuevaReceta = recetaRepository.findById(nuevaRecetaId)
         .orElseThrow(() -> new ResourceNotFoundException("Error: Receta con ID " + nuevaReceta + " no existe."));
       usuarioExistente.setReceta(nuevaReceta);
     }
