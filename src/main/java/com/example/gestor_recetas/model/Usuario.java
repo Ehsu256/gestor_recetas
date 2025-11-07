@@ -1,5 +1,8 @@
 package com.example.gestor_recetas.model;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
@@ -22,6 +25,9 @@ public class Usuario {
   // Relación Uno a Muchos
   @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
 
+  @JsonManagedReference
+  // Para tabla usuario
+  private List<Receta> receta = new ArrayList<>();
   @JsonManagedReference
   // Para tabla usuario
   private List<Receta> receta = new ArrayList<>();
