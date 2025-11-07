@@ -28,7 +28,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Autor> obtenerPorId(@PathVariable Integer id) {
+    public ResponseEntity<Usuario> obtenerPorId(@PathVariable Integer id) {
         return usuarioService.obtenerPorId(id).
     }
 
