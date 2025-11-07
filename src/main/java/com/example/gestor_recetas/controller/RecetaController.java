@@ -1,7 +1,5 @@
-// CAMBIAR SEGÚN COMO QUEDEN LOS OTROS ARCHIVOS (en model y service)
-
-// Utilizando Integer en vez de Long para las IDs porque las IDs
-// están definidas como Int en MySQL
+// Utilizando Integer en vez de Long para las IDs porque
+// las IDs están definidas como Int en MySQL
 
 package com.example.gestor_recetas.controller;
 
@@ -16,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
+@SuppressWarnings("unused") // Omitir error por no utilizar variables
 
 @RestController // Para el manejo de la API
 @RequestMapping("api/recetas") // Endpoint para las peticiones (http://localhost:8080/api/recetas)
@@ -39,7 +39,7 @@ public class RecetaController {
   // GET por ID (consultar un sólo campo de acuerdo a la ID que se especifique en la petición)
   @GetMapping("/{id}")
   public ResponseEntity<Receta> ObtenerPorId(@PathVariable Integer id) {
-    return recetaService.obtenerPorId(id).map(receta -> new ResponseEntity<>(autor, HttpStatus.OK))
+    return recetaService.obtenerPorId(id).map(receta -> new ResponseEntity<>(receta, HttpStatus.OK))
       .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
