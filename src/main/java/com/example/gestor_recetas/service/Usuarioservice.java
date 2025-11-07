@@ -17,7 +17,7 @@ public class Usuarioservice {
     @Autowired
   private RecetaRepository recetaRepository;
   @Autowired
-  private Usuariopository usuarioRepository;
+  private UsuarioRepository usuarioRepository;
 
     //POST
       public Usuario guardarUsuario(Usuariio usuario){
