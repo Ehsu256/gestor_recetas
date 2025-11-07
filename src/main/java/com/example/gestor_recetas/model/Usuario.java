@@ -1,9 +1,11 @@
 package com.example.gestor_recetas.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.Data;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Data
@@ -17,10 +19,10 @@ public class Usuario {
   private String rol;
   private String redes;
 
-  // Relación Many-to-One
-  @ManyToOne(fetch=FetchType.LAZY)
-  @JoinColumn(name="usuario_id")
+  // Relación Uno a Muchos
+  @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
 
-  @JsonBackReference
-  private Usuario usuario;
+  @JsonManagedReference
+  // Para tabla usuario
+  private List<Receta> receta = new ArrayList<>();
 }
