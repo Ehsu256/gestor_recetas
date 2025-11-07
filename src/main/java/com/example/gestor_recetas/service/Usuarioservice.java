@@ -12,55 +12,54 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@service
+@Service
 public class Usuarioservice {
-    @Autowired
+  @Autowired
   private RecetaRepository recetaRepository;
   @Autowired
   private UsuarioRepository usuarioRepository;
 
-    //POST
-      public Usuario guardarUsuario(Usuariio usuario){
-    Integer recetaId = usuario.getAutor().getId();
-    Receta receta = recetaRepository.findById(recetaId)
-      .orElseThrow(() -> new ResourceNotFoundException("Receta no encontrada con ID: " + autorId));
-    usuario.setAutor(receta);
-    return usuarioRepository.save(usuario);
-  }
+  //POST
+  public Usuario guardarUsuario(Usuario usuario){
+  Integer recetaId = usuario.getUsuario().getId();
+  Receta receta = recetaRepository.findById(recetaId)
+    .orElseThrow(() -> new ResourceNotFoundException("Receta no encontrada con ID: " + idUsuario));
+  usuario.setUsuario(usuario);
+  return usuarioRepository.save(usuario);
+}
   // GET ALL
   public List<Usuario> obtenerTodos(){
     return usuarioRepository.findAll();
 
 }
 // GET BY ID
-  public Optional<Usuario> obtenerPorId(Long id){
-    return usuarioRepository.findById(id);
-
+public Optional<Usuario> obtenerPorId(Integer id){
+  return usuarioRepository.findById(id);
 }
+
  // PUT (Requiere que el Libro y el nuevo Autor (si se cambia) existan)
-  public Usuario actualizarUsuario(Long id, Usuario detalles) {
-    return usuarioRepository.findById(id).map(usuarioExistente -> {
-      usuarioExistente.setTitulo(detalles.getTitulo());
-      usuarioExistente.setIsbn(detalles.getIsbn());
+public Usuario actualizarUsuario(Integer id, Usuario detalles) {
+  return usuarioRepository.findById(id).map(usuarioExistente -> {
+    usuarioExistente.setCorreo(detalles.getCorreo());
+    usuarioExistente.setContraseña(detalles.getContraseña());
+    usuarioExistente.setRol(detalles.getRol());
+    usuarioExistente.setRedes(detalles.getRedes());
 
-      if (detalles.getReceta() != null && detalles.getReceta().getId() != null) {
-        Integer nuevoRecetaId = detalles.getReceta().getId();
-        Receta nuevoReceta = recetaRepository.findById(nuevaRecetaId)
-          .orElseThrow(() -> new ResourceNotFoundException("Error: Receta con ID " + nuevaReceta + " no existe."));
-        usuarioExistente.setReceta(nuevaReceta);
-}
+    if (detalles.getReceta() != null && detalles.getReceta().getId() != null) {
+      Integer nuevoRecetaId = detalles.getReceta().getId();
+      Receta nuevoReceta = recetaRepository.findById(nuevaRecetaId)
+        .orElseThrow(() -> new ResourceNotFoundException("Error: Receta con ID " + nuevaReceta + " no existe."));
+      usuarioExistente.setReceta(nuevaReceta);
+    }
      return usuarioRepository.save(usuarioExistente);
     }).orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con ID: " + id));
   }
-    // DELETE
+
+  // DELETE
   public void eliminarUsuario(Integer id){
     if(!usuarioRepository.existsById(id)){
-
       throw new ResourceNotFoundException("Usuario no encontrado con ID: " + id);
-
     }
-      // Notice it is byId, not All
     usuarioRepository.deleteById(id);
-}
-
+  }
 }

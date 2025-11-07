@@ -3,16 +3,10 @@ package com.example.gestor_recetas.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import java.util.List;
-import java.util.ArrayList;
-
-//Notacion
+//Notación
 @Entity
-// @Table(name = "recetas")
 @Data
 @NoArgsConstructor
 

@@ -3,7 +3,7 @@
 
 package com.example.gestor_recetas.controller;
 
-import com.example.gestor_recetas.model.Receta; // Pendiente por crear
+import com.example.gestor_recetas.model.Receta;
 import com.example.gestor_recetas.service.RecetaService;
 import com.example.gestor_recetas.exceptions.ResourceNotFoundException;
 
