@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.Data;
-import java.util.List;
-import java.util.ArrayList;
 
 @Entity
 @Data
