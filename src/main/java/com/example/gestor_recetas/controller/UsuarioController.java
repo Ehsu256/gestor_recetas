@@ -3,7 +3,6 @@ package com.example.gestor_recetas.controller;
 import com.example.gestor_recetas.model.Usuario;
 import com.example.gestor_recetas.service.UsuarioService;
 import com.example.gestor_recetas.exceptions.ResourceNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -6,7 +6,6 @@ package com.example.gestor_recetas.controller;
 import com.example.gestor_recetas.model.Receta;
 import com.example.gestor_recetas.service.RecetaService;
 import com.example.gestor_recetas.exceptions.ResourceNotFoundException;
-
 import org.apache.tomcat.util.file.ConfigurationSource.Resource;
 import org.hibernate.boot.beanvalidation.IntegrationException;
 import org.springframework.beans.factory.annotation.Autowired;

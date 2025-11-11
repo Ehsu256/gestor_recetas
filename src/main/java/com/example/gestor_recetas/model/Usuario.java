@@ -2,7 +2,6 @@ package com.example.gestor_recetas.model;
 
 import java.util.List;
 import java.util.ArrayList;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;

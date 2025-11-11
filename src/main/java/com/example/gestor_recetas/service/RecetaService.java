@@ -3,7 +3,6 @@ package com.example.gestor_recetas.service;
 import com.example.gestor_recetas.model.Receta;
 import com.example.gestor_recetas.repository.RecetaRepository;
 import com.example.gestor_recetas.exceptions.ResourceNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
