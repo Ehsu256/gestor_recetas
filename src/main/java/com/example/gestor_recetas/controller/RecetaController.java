@@ -56,7 +56,7 @@ public class RecetaController {
     }
   }
 
-  // DELTE (eliminar un campo de la tabla recetas)
+  // DELETE (eliminar un campo de la tabla recetas)
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> eliminarReceta(@PathVariable Integer id) {
     try {

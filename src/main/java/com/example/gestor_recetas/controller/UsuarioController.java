@@ -2,7 +2,6 @@ package com.example.gestor_recetas.controller;
 
 import com.example.gestor_recetas.model.Usuario;
 import com.example.gestor_recetas.service.UsuarioService;
-import com.example.gestor_recetas.service.Usuarioservice;
 import com.example.gestor_recetas.exceptions.ResourceNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import java.util.List;
 @RequestMapping("api/usuarios")
 public class UsuarioController {
     @Autowired
-    private Usuarioservice usuarioService;
+    private UsuarioService usuarioService;
 
     @PostMapping
     public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
