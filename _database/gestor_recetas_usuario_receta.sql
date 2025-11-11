@@ -16,34 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `feedback`
+-- Table structure for table `usuario_receta`
 --
 
-DROP TABLE IF EXISTS `feedback`;
+DROP TABLE IF EXISTS `usuario_receta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `feedback` (
-  `idFeedback` int NOT NULL AUTO_INCREMENT,
-  `idUsuario` int NOT NULL,
-  `idReceta` int NOT NULL,
-  `puntuacion` float DEFAULT NULL,
-  `dificultad` float DEFAULT NULL,
-  `comentario` text,
-  PRIMARY KEY (`idFeedback`),
+CREATE TABLE `usuario_receta` (
+  `idUsuario` int DEFAULT NULL,
+  `idReceta` int DEFAULT NULL,
   KEY `idUsuario` (`idUsuario`),
   KEY `idReceta` (`idReceta`),
-  CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`),
-  CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`idReceta`) REFERENCES `receta` (`idReceta`)
+  CONSTRAINT `usuario_receta_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`),
+  CONSTRAINT `usuario_receta_ibfk_2` FOREIGN KEY (`idReceta`) REFERENCES `receta` (`idReceta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `feedback`
+-- Dumping data for table `usuario_receta`
 --
 
-LOCK TABLES `feedback` WRITE;
-/*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-/*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
+LOCK TABLES `usuario_receta` WRITE;
+/*!40000 ALTER TABLE `usuario_receta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuario_receta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
