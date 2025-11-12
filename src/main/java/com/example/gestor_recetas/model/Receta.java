@@ -11,16 +11,15 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Receta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // TODO: Es posible que haya que cambiar idUsuario a id_usuario para que no existan conflictos con la base de datos
-    private Integer idReceta;
-    private String nombreReceta;
+    private Integer id_receta;
+    private String nombre_receta;
     private String ingredientes;
     private String instrucciones;
     private String enlace;
-    private String NER;
+    private String ner;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idUsuario")
+    @JoinColumn(name="id_usuario")
     
     @JsonBackReference
     private Usuario usuario;

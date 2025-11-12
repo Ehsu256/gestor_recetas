@@ -32,11 +32,11 @@ public class RecetaService {
   // PUT
   public Receta actualizarReceta(Integer id, Receta detalles) {
     return recetaRepository.findById(id).map(recetaExistente -> {
-      recetaExistente.setNombreReceta(detalles.getNombreReceta());
+      recetaExistente.setNombre_receta(detalles.getNombre_receta());
       recetaExistente.setIngredientes(detalles.getIngredientes());
       recetaExistente.setInstrucciones(detalles.getInstrucciones());
       recetaExistente.setEnlace(detalles.getEnlace());
-      recetaExistente.setNER(detalles.getNER());
+      recetaExistente.setNer(detalles.getNer());
       return recetaRepository.save(recetaExistente);
     }).orElseThrow(() -> new ResourceNotFoundException("Receta no encontrada con ID: " + id));
   }

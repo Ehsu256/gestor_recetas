@@ -12,9 +12,8 @@ import lombok.Data;
 @NoArgsConstructor
 public class Usuario {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY) // Para hacer un ID autoincrementable?
-  // TODO: Es posible que haya que cambiar idUsuario a id_usuario para que no existan conflictos con la base de datos
-  private Integer idUsuario;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id_usuario;
   private String correo;
   private String contraseña;
   private String rol;
