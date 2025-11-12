@@ -1,1 +1,0 @@
-crear carpetas "css" y "js".
