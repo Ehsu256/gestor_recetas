@@ -43,7 +43,7 @@ public class RecetaController {
   }
 
   // PUT (actualizar un campo de la tabla recetas)
-  @PutMapping
+  @PutMapping("/{id}")
   public ResponseEntity<Receta> actualizarReceta(@PathVariable Integer id, @RequestBody Receta detalles) {
     // Agarra la ID del path y el body del request (puesto en una variable "detalles")
     // Luego se utilizan para identificar el campo a modificar (ID) y con qué datos modificarlo (detalles)
