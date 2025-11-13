@@ -1,0 +1,467 @@
+/*
+ * Archivo: ../static/css/style.css
+ * Paleta: Negro (Fondo), Amarillo (Acento), Rojo (Principal), Blanco/Gris
+ */
+
+:root {
+    --primary-red: #B31B1B; /* Rojo para títulos/botones hover y como base de animación */
+    --secondary-yellow: #FFD700; /* Amarillo para acentos y como color secundario de animación */
+    --tertiary-black: #222222; /* Negro principal para header/nav */
+    --dark-grey: #333333; /* Gris oscuro para el fondo general */
+    --light-bg: #f5f5f5; /* Fondo claro para formularios */
+    --header-text: #ffffff;
+    --white-shadow: rgba(255, 255, 255, 0.4); /* Sombra blanca para encabezado */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-grey);
+    color: var(--dark-grey);
+    position: relative;
+    min-height: 100vh;
+}
+
+/* --- ANIMACIÓN DE FONDO DINÁMICO (Sin cambios) --- */
+.background-dish {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://source.unsplash.com/random/1920x1080/?food,cooking,dish'); 
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(80%) brightness(50%); 
+    animation: backgroundChange 30s infinite alternate; 
+    z-index: -1; 
+}
+
+@keyframes backgroundChange {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* --- ANIMACIÓN DINÁMICA DE COLOR/BRILLO PARA EL TEXTO --- */
+@keyframes color-pulse {
+    0% { 
+        background-color: var(--primary-red);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.3);
+        color: white; 
+    }
+    50% { 
+        /* Cambia a un color de acento llamativo (Amarillo) y aumenta el brillo */
+        background-color: var(--secondary-yellow); 
+        box-shadow: 0 0 15px var(--secondary-yellow), 0 0 30px var(--secondary-yellow);
+        color: var(--tertiary-black); /* Cambia el color del texto para que contraste */
+    }
+    100% { 
+        background-color: var(--primary-red);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.3);
+        color: white; 
+    }
+}
+
+/* --- HEADER Y NAVEGACIÓN --- */
+
+header {
+    background-color: var(--tertiary-black); 
+    color: var(--header-text);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    transition: none;
+    z-index: 10;
+    position: relative;
+}
+
+header:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
+.header-content {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    flex-grow: 0; 
+}
+
+.logo-area a { 
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+/* 🔴 CAMBIO CLAVE: ICONO A COLOR ROJO 🔴 */
+#dynamicFoodLogo { 
+    width: 30px; 
+    height: 30px;
+    margin-right: 8px; 
+    /* Aplicar filtro para cambiar el color del icono blanco a rojo vibrante */
+    filter: sepia(1) saturate(20) hue-rotate(330deg) brightness(0.8) contrast(1.5);
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+#dynamicFoodLogo:hover {
+    animation: spin 3s linear infinite; 
+    filter: sepia(1) saturate(20) hue-rotate(330deg) brightness(1.2) contrast(1.5); /* Más brillante en hover */
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.logo-area h1 {
+    font-size: 1.6em; 
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--header-text); 
+}
+
+/* 🌟 APLICACIÓN DEL EFECTO DINÁMICO AL TEXTO 🌟 */
+#logo-text-float {
+    display: inline-block; 
+    padding: 5px 10px;
+    border-radius: 5px;
+    
+    /* Aplicar la animación de pulso */
+    animation: color-pulse 4s infinite alternate; /* 4 segundos de duración, infinito, alternando */
+
+    /* Resto de estilos flotantes */
+    transform: none; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#logo-text-float:hover {
+    /* Mantener el efecto flotante solo en hover */
+    transform: scale(1.05) translateY(-2px); 
+    /* Detener la animación en hover y fijar un estado muy brillante */
+    animation-play-state: paused; 
+    background-color: var(--primary-red); 
+    box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    color: white; 
+}
+
+/* NAV BAR (Sin cambios) */
+nav {
+    background-color: var(--tertiary-black); 
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 2px solid var(--secondary-yellow); 
+}
+
+nav .nav-links button,
+nav .nav-auth button {
+    background: none;
+    border: none;
+    color: var(--header-text);
+    padding: 12px 18px; 
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 0;
+}
+
+nav .nav-links button:first-child { 
+    background-color: var(--primary-red); 
+    color: white;
+}
+nav .nav-links button:first-child:hover {
+    background-color: var(--primary-red);
+}
+
+nav button:hover:not(#navLoginBtn) {
+    background-color: var(--dark-grey); 
+    color: white;
+}
+
+#navLoginBtn {
+    padding: 7px 12px; 
+    font-size: 0.9em;
+    border: 1px solid var(--secondary-yellow);
+    background-color: var(--secondary-yellow);
+    color: var(--tertiary-black); 
+    border-radius: 3px;
+    margin: 7px 0;
+    font-weight: bold;
+}
+
+#navLoginBtn:hover {
+    background-color: var(--primary-red);
+    color: var(--secondary-yellow);
+    border-color: var(--secondary-yellow);
+}
+
+/* --- MAIN CONTENT (Contenedor principal) --- */
+
+main {
+    padding: 30px;
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: #ffffff; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    color: var(--primary-red);
+    border-bottom: 2px solid var(--secondary-yellow);
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    text-transform: uppercase;
+}
+
+/* --- ÁREA DE BÚSQUEDA Y BOTÓN CREAR RECETA --- */
+
+.search-area {
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 25px; 
+    align-items: center; 
+    flex-wrap: wrap; 
+}
+
+.search-area input {
+    flex-grow: 1; 
+    padding: 10px 12px;
+    min-width: 150px; 
+}
+
+.search-area button {
+    padding: 10px 15px;
+    background-color: var(--secondary-yellow); 
+    color: var(--tertiary-black); 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.search-area button:hover {
+    background-color: var(--primary-red);
+    color: white;
+}
+
+/* Estilo para el botón de Crear Receta */
+#btnCrearReceta {
+    background-color: var(--primary-red);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+#btnCrearReceta:hover {
+    opacity: 0.9;
+}
+
+
+/* --- FORMULARIOS (LOGIN/REGISTRO/AGREGAR RECETA) --- */
+
+#loginForm, #registroForm, #formReceta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: var(--light-bg);
+}
+
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+button[type="submit"], #logoutBtn {
+    background-color: var(--tertiary-black);
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.05em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+button[type="submit"]:hover, #logoutBtn:hover {
+    background-color: var(--primary-red);
+}
+
+/* --- ESTILO DE TARJETAS DE RECETA (Flotantes) --- */
+
+#recetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    margin-top: 30px;
+    justify-content: flex-start; 
+}
+
+.receta-card {
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    padding: 15px; 
+    border-radius: 8px;
+    width: calc(33.333% - 13.333px); 
+    box-sizing: border-box;
+    
+    /* Efecto flotante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+}
+
+.receta-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+}
+
+.receta-card h3 {
+    color: var(--primary-red);
+    font-size: 1.2em; 
+    margin-top: 0;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed #eee; 
+    padding-bottom: 5px;
+    text-align: center; 
+}
+
+.receta-card img {
+    max-width: 100%;
+    height: 120px; 
+    object-fit: cover; 
+    display: block;
+    margin: 0 auto 12px auto; 
+    border-radius: 5px;
+}
+
+.receta-card p {
+    font-size: 0.9em; 
+    line-height: 1.4;
+    color: #555;
+    margin-bottom: 15px; 
+    flex-grow: 1; 
+}
+
+/* --- ESTILOS PARA LOS BOTONES DE ACCIÓN (MODIFICAR/BORRAR) --- */
+
+.card-actions {
+    margin-top: auto; 
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+    display: flex;
+    gap: 8px; 
+}
+
+.action-btn {
+    padding: 7px 12px; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.85em; 
+    flex-grow: 1; 
+}
+
+.modify-btn {
+    background-color: var(--secondary-yellow); 
+    color: var(--tertiary-black);
+}
+
+.modify-btn:hover {
+    background-color: #e0b400; 
+}
+
+.delete-btn {
+    background-color: var(--primary-red); 
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #9e1818; 
+}
+
+/* --- MENSAJES DE ESTADO --- */
+.loading-message, .error-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+    padding: 20px;
+}
+
+.error-message {
+    color: var(--primary-red);
+    font-weight: bold;
+}
+
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 1024px) {
+    .receta-card {
+        width: calc(50% - 10px); 
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: center; 
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .receta-card {
+        width: 100%; 
+    }
+    .logo-area h1 {
+        font-size: 1.4em;
+    }
+    .search-area {
+        flex-direction: column; 
+    }
+    .search-area button, 
+    .search-area input,
+    #btnCrearReceta {
+        width: 100%;
+        margin-top: 5px; 
+    }
+    .search-area button:first-of-type { 
+        order: 2; 
+    }
+    #btnCrearReceta {
+        order: 1; 
+    }
+}

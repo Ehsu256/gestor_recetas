@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GESTOR DE RECETAS | Tu Cocina Dinámica</title>
+  
+  <script src="../static/js/login.js"></script> 
+  <script src="../static/js/test.js"></script> 
+  <link href="../static/css/style.css" rel="stylesheet"></link>
+</head>
+<body>
+  
+  <div class="background-dish"></div> 
+  
+  <header>
+    <div class="header-content">
+      <div class="logo-area">
+        <a href="#" onclick="mostrarSeccion('recetas'); return false;" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/857/857681.png" alt="Plato Giratorio Logo" id="dynamicFoodLogo">
+            <h1><span class="logo-accent-mealdb">GESTOR</span> DE <span class="logo-accent-db">RECETAS</span></h1> 
+        </a>
+      </div>
+      <div class="auth-area">
+      </div>
+    </div>
+    <nav>
+      <div class="nav-links">
+        <button onclick="mostrarSeccion('recetas')">Recetas</button>
+      </div>
+      <div class="nav-auth">
+        <button onclick="mostrarSeccion('login')" id="navLoginBtn">Iniciar Sesión</button>
+      </div>
+    </nav>
+  </header>
+  
+  <main class="fade-in">
+    <section id="login" style="display:none;"> 
+      <h2>Inicia Sesión</h2>
+      <form id="loginForm">
+        <input type="text" id="usuarioLogin" placeholder="Usuario" required>
+        <input type="password" id="claveLogin" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+      </form>
+      <p>¿No tienes cuenta? <a href="#" onclick="mostrarSeccion('registro'); return false;">Regístrate aquí.</a></p>
+    </section>
+
+    <section id="registro" style="display:none;">
+        <h2>Regístrate para Crear Recetas</h2>
+        <form id="registroForm">
+            <input type="text" id="usuarioRegistro" placeholder="Nombre de Usuario" required>
+            <input type="email" id="emailRegistro" placeholder="Correo Electrónico" required>
+            <input type="password" id="claveRegistro" placeholder="Contraseña (mín. 6 caracteres)" required>
+            <button type="submit">Crear Cuenta</button>
+        </form>
+        <p>¿Ya tienes cuenta? <a href="#" onclick="mostrarSeccion('login'); return false;">Inicia Sesión.</a></p>
+    </section>
+    
+    <section id="recetasSection">
+      
+      <div class="search-area">
+          <input type="text" id="searchInput" placeholder="Buscar recetas por nombre o descripción..." onkeyup="filtrarRecetas()">
+          <button onclick="filtrarRecetas()">Buscar</button>
+          
+          <button id="btnCrearReceta" style="display:none;" onclick="prepararFormularioCreacion()">Crear Receta</button> 
+      </div>
+      
+      <form id="formReceta" style="display:none;">
+        <h3 id="formTitle">Agregar Nueva Receta</h3>
+        <input type="hidden" id="recetaId" value=""> <input type="text" id="nombre" placeholder="Nombre de la receta" required>
+        <input type="text" id="imagen" placeholder="URL de imagen (opcional)">
+        <textarea id="desc" placeholder="Descripción" required></textarea>
+        <button type="submit" id="submitButton">Guardar</button>
+        <button type="button" onclick="mostrarSeccion('recetas')">Cancelar</button>
+      </form>
+      
+      <button type="button" id="logoutBtn" onclick="cerrarSesion()" style="display:none; margin-bottom: 20px;">Cerrar Sesión</button>
+
+      <section id="recetas"></section>
+    </section>
+  </main>
+</body>
+</html>

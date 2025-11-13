@@ -1,6 +1,3 @@
-// Utilizando Integer en vez de Long para las IDs porque
-// las IDs están definidas como Int en MySQL
-
 package com.example.gestor_recetas.controller;
 
 import com.example.gestor_recetas.model.Receta;
