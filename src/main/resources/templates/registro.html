@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GESTOR DE RECETAS | Iniciar Sesión</title>
+    <title>GESTOR DE RECETAS | Regístrate</title>
 
-    <script src="../static/js/login.js"></script>
+    <script src="../static/js/registro.js"></script>
     <link href="../static/css/style.css" rel="stylesheet" />
   </head>
 
@@ -29,30 +29,41 @@
         </div>
         <div class="nav-auth">
           <a
-            href="login.html"
-            id="navLoginBtn"
+            href="registro.html"
+            id="navRegistroBtn"
             style="background-color: var(--primary-red); color: white"
-            >Iniciar Sesión</a
+            >Regístrate</a
           >
         </div>
       </nav>
     </header>
 
     <main class="fade-in">
-      <section id="login">
-        <h2>Inicia Sesión</h2>
-        <form id="loginForm">
-          <input type="text" id="usuarioLogin" placeholder="Usuario" required />
+      <section id="registro">
+        <h2>Crear Cuenta</h2>
+        <form id="registroForm">
+          <input
+            type="text"
+            id="usuarioRegistro"
+            placeholder="Nombre de Usuario"
+            required
+          />
+          <input
+            type="email"
+            id="emailRegistro"
+            placeholder="Correo Electrónico"
+            required
+          />
           <input
             type="password"
-            id="claveLogin"
+            id="claveRegistro"
             placeholder="Contraseña"
             required
           />
-          <button type="submit">Entrar</button>
+          <button type="submit">Registrarme</button>
         </form>
 
-        <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+        <p>¿Ya tienes cuenta? <a href="login.html">Inicia Sesión</a></p>
       </section>
     </main>
   </body>

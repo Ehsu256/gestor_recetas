@@ -13,6 +13,7 @@ import java.util.List;
 
 @SuppressWarnings("unused") // Omitir error por no utilizar variables
 
+@CrossOrigin(origins = "*", maxAge = 3600) // Permite el consumo de la API desde localhost
 @RestController // Para el manejo de la API
 @RequestMapping("api/recetas") // Endpoint para las peticiones (http://localhost:8080/api/recetas)
 public class RecetaController {

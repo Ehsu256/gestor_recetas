@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GESTOR DE RECETAS | Nueva Receta</title>
+
+    <script src="../static/js/recetas.js"></script>
+    <link href="../static/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo-area">
+          <a href="index.html">
+            <img id="dynamicFoodLogo" src="../static/img/logo.svg" alt="Logo" />
+            <h1>
+              <span class="logo-part-1">GESTOR</span>
+              <span class="logo-part-2">RECETAS</span>
+            </h1>
+          </a>
+        </div>
+      </div>
+
+      <nav>
+        <div class="nav-links">
+          <a href="index.html">Recetas</a>
+        </div>
+        <div class="nav-auth">
+          <a
+            href="crear-editar.html"
+            id="navCrearEditarBtn"
+            style="background-color: var(--primary-red); color: white"
+            >Crear Receta</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main class="fade-in">
+      <h2 id="formTitle">Agregar Nueva Receta</h2>
+
+      <form id="formReceta">
+        <input type="hidden" id="recetaId" />
+        <input
+          type="text"
+          id="nombre"
+          placeholder="Nombre de la receta"
+          required
+        />
+        <input type="text" id="imagen" placeholder="URL de imagen (opcional)" />
+        <input
+          type="text"
+          id="ingredientes"
+          placeholder="Ingredientes "
+          required
+        />
+        <textarea id="desc" placeholder="Paso a paso" required></textarea>
+
+        <button type="submit" id="submitButton">Guardar</button>
+
+        <button type="button" onclick="window.location.href='index.html'">
+          Cancelar
+        </button>
+      </form>
+    </main>
+  </body>
+</html>

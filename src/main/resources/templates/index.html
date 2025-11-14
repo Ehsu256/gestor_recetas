@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GESTOR DE RECETAS | Inicio</title>
+
+    <script src="../static/js/recetas.js"></script>
+    <link href="../static/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo-area">
+          <a href="index.html">
+            <img id="dynamicFoodLogo" src="../static/img/logo.svg" alt="Logo" />
+            <h1>
+              <span class="logo-part-1">GESTOR</span>
+              <span class="logo-part-2">RECETAS</span>
+            </h1>
+          </a>
+        </div>
+      </div>
+
+      <nav>
+        <div class="nav-links">
+          <a href="index.html">Recetas</a>
+        </div>
+        <div class="nav-auth">
+          <a href="login.html" id="navLoginBtn">Iniciar Sesión</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="fade-in">
+      <div class="search-and-controls">
+        <div class="search-area">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar recetas..."
+            onkeyup="filtrarRecetas()"
+          />
+          <button onclick="filtrarRecetas()">Buscar</button>
+
+          <a
+            id="btnCrearReceta"
+            class="action-btn"
+            style="display: none"
+            href="crear-editar.html"
+            >Crear Receta</a
+          >
+        </div>
+
+        <button
+          id="logoutBtn"
+          onclick="cerrarSesion()"
+          style="display: none; margin-bottom: 20px"
+        >
+          Cerrar Sesión
+        </button>
+      </div>
+
+      <section id="recetas"></section>
+    </main>
+  </body>
+</html>
