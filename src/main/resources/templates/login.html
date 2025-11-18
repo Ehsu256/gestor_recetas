@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GESTOR DE RECETAS | Iniciar Sesión</title>
-
-    <script src="../static/js/login.js"></script>
+    
     <link href="../static/css/style.css" rel="stylesheet" />
   </head>
-
   <body>
     <header>
       <div class="header-content">
@@ -22,38 +20,29 @@
           </a>
         </div>
       </div>
-
       <nav>
         <div class="nav-links">
           <a href="index.html">Recetas</a>
         </div>
         <div class="nav-auth">
-          <a
-            href="login.html"
-            id="navLoginBtn"
-            style="background-color: var(--primary-red); color: white"
-            >Iniciar Sesión</a
-          >
+          <a href="login.html" id="navLoginBtn" style="background-color: var(--primary-red); color: white">
+            Iniciar Sesión
+          </a>
         </div>
       </nav>
     </header>
-
     <main class="fade-in">
       <section id="login">
         <h2>Inicia Sesión</h2>
         <form id="loginForm">
           <input type="text" id="usuarioLogin" placeholder="Usuario" required />
-          <input
-            type="password"
-            id="claveLogin"
-            placeholder="Contraseña"
-            required
-          />
+          <input type="password" id="claveLogin" placeholder="Contraseña" required />
           <button type="submit">Entrar</button>
         </form>
-
         <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
       </section>
     </main>
+
+    <script src="../static/js/script.js"></script>
   </body>
 </html>

@@ -1,7 +1,3 @@
-/*
- * Archivo: ../static/css/style.css - ESTILOS GLOBALES Y MODULARES
- */
-
 :root {
     --primary-red: #B31B1B; /* Rojo principal de la marca */
     --secondary-yellow: #FFD700; /* Amarillo acento (botones, estrellas) */
@@ -367,6 +363,7 @@ h2 {
     overflow: hidden; 
     display: flex; 
     flex-direction: column; 
+    padding: 20px;
 }
 
 .receta-card:hover {

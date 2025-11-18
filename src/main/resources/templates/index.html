@@ -4,17 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GESTOR DE RECETAS | Inicio</title>
-
-    <script src="../static/js/recetas.js"></script>
     <link href="../static/css/style.css" rel="stylesheet" />
   </head>
-
   <body>
     <header>
       <div class="header-content">
         <div class="logo-area">
           <a href="index.html">
-            <img id="dynamicFoodLogo" src="../static/img/logo.svg" alt="Logo" />
+            <img id="dynamicFoodLogo" src="" alt="Logo" />
             <h1>
               <span class="logo-part-1">GESTOR</span>
               <span class="logo-part-2">RECETAS</span>
@@ -22,7 +19,6 @@
           </a>
         </div>
       </div>
-
       <nav>
         <div class="nav-links">
           <a href="index.html">Recetas</a>
@@ -32,7 +28,6 @@
         </div>
       </nav>
     </header>
-
     <main class="fade-in">
       <div class="search-and-controls">
         <div class="search-area">
@@ -43,7 +38,6 @@
             onkeyup="filtrarRecetas()"
           />
           <button onclick="filtrarRecetas()">Buscar</button>
-
           <a
             id="btnCrearReceta"
             class="action-btn"
@@ -52,7 +46,6 @@
             >Crear Receta</a
           >
         </div>
-
         <button
           id="logoutBtn"
           onclick="cerrarSesion()"
@@ -61,8 +54,8 @@
           Cerrar Sesión
         </button>
       </div>
-
       <section id="recetas"></section>
     </main>
+    <script src="../static/js/script.js"></script>
   </body>
 </html>
