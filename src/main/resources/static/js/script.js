@@ -12,7 +12,7 @@ async function cargarRecetas() {
 
   // Rellenar la lista global de recetas de forma segura
   todasLasRecetas = [];
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < resultadoRecetas.length; i++) {
     const r = resultadoRecetas[i];
     todasLasRecetas.push({
       id: r.id_receta,

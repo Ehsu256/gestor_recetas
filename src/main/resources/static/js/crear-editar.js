@@ -20,6 +20,6 @@ document.getElementById('formReceta').addEventListener('submit', async (event) =
       ner: null
     })
   });
-  const resultadoCrearReceta = await respuestaCrearReceta.json();
-  console.log(resultadoCrearReceta);
+  alert('Receta creada con éxito');
+  window.location.href = "../templates/index.html";
 });
