@@ -34,8 +34,7 @@ function filtrarRecetas() {
   const recetasFiltradas = todasLasRecetas.filter(receta => {
     return (
       receta.nombre.toLowerCase().includes(terminoBusqueda) ||
-      (receta.ingredientes && receta.ingredientes.toLowerCase().includes(terminoBusqueda)) ||
-      (receta.instrucciones && receta.instrucciones.toLowerCase().includes(terminoBusqueda))
+      (receta.ingredientes && receta.ingredientes.toLowerCase().includes(terminoBusqueda))
     );
   });
 
