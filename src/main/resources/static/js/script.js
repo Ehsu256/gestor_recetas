@@ -1,22 +1,6 @@
-// Variable global para simular el estado de sesión y almacenar las recetas
+// Variable global para simular el estado de sesión
 let usuarioLogueado = null;
 
-document.getElementById('loginForm').addEventListener('submit', (event) => {
-  event.preventDefault();
-  console.log('iniciar sesión');
-  
-  const usuarioLogin = document.getElementById('usuarioLogin').value;
-  const claveLogin = document.getElementById('claveLogin').value;
-
-  if (usuarioLogin == 'admin@gmail.com' && claveLogin == 'root') {
-    console.log('sesion iniciada');
-    window.location.href = "../templates/crear-editar.html";
-  } else {
-    console.log('no');
-  }
-});
-
-// --- Funciones de Carga y Filtrado ---
 async function cargarRecetas() {
   const recetasContainer = document.getElementById('recetas'); 
   recetasContainer.innerHTML = '<p class="loading-message">Cargando recetas de la base de datos local...</p>';
@@ -35,11 +19,10 @@ async function cargarRecetas() {
     } 
   }
 
-  // Muestra el contenido inmediatamente, ya que no hay espera de API.
   mostrarRecetasEnDOM(todasLasRecetas);
 }
-
 cargarRecetas();
+
 
 function filtrarRecetas() {
   const terminoBusqueda = document.getElementById('searchInput').value.toLowerCase();
@@ -57,7 +40,7 @@ function filtrarRecetas() {
   mostrarRecetasEnDOM(recetasFiltradas);
 }
 
-// CREAR TARJETAS PARA MOSTRAR RECETAS
+
 function mostrarRecetasEnDOM(recetas) {
   const recetasContainer = document.getElementById('recetas');
   recetasContainer.innerHTML = '';
@@ -98,141 +81,113 @@ function mostrarRecetasEnDOM(recetas) {
 /**
  * Prepara el formulario para el modo CREACIÓN (Guardar).
  */
-function prepararFormularioCreacion() {
-  const form = document.getElementById('formReceta');
-  document.getElementById('formTitle').textContent = 'Agregar Nueva Receta';
-  document.getElementById('submitButton').textContent = 'Guardar';
-  document.getElementById('recetaId').value = '';
-  form.reset();
-  form.style.display = 'flex';
-}
+// function prepararFormularioCreacion() {
+//   const form = document.getElementById('formReceta');
+//   document.getElementById('formTitle').textContent = 'Agregar Nueva Receta';
+//   document.getElementById('submitButton').textContent = 'Guardar';
+//   document.getElementById('recetaId').value = '';
+//   form.reset();
+//   form.style.display = 'flex';
+// }
 
-function editarReceta(id) {
-  const receta = todasLasRecetas.find(r => r.id === id);
-  if (!receta) {
-    alert('Receta no encontrada.');
-    return;
-  }
+// function editarReceta(id) {
+//   const receta = todasLasRecetas.find(r => r.id === id);
+//   if (!receta) {
+//     alert('Receta no encontrada.');
+//     return;
+//   }
 
-  const form = document.getElementById('formReceta');
-  document.getElementById('formTitle').textContent = `Modificar Receta: ${receta.nombre}`;
-  document.getElementById('submitButton').textContent = 'Guardar Cambios';
+//   const form = document.getElementById('formReceta');
+//   document.getElementById('formTitle').textContent = `Modificar Receta: ${receta.nombre}`;
+//   document.getElementById('submitButton').textContent = 'Guardar Cambios';
 
-  // Rellenar formulario con datos de la receta
-  document.getElementById('recetaId').value = receta.id;
-  document.getElementById('nombre').value = receta.nombre;
-  document.getElementById('imagen').value = receta.imagen;
-  document.getElementById('desc').value = receta.desc.replace('...', '');
+//   // Rellenar formulario con datos de la receta
+//   document.getElementById('recetaId').value = receta.id;
+//   document.getElementById('nombre').value = receta.nombre;
+//   document.getElementById('imagen').value = receta.imagen;
+//   document.getElementById('desc').value = receta.desc.replace('...', '');
 
-  form.style.display = 'flex';
-  document.getElementById('recetas').scrollIntoView({ behavior: 'smooth' });
-}
+//   form.style.display = 'flex';
+//   document.getElementById('recetas').scrollIntoView({ behavior: 'smooth' });
+// }
 
-function borrarReceta(id) {
-  if (!confirm('¿Estás seguro de que quieres borrar esta receta?')) {
-    return;
-  }
+// function borrarReceta(id) {
+//   if (!confirm('¿Estás seguro de que quieres borrar esta receta?')) {
+//     return;
+//   }
 
-  const initialLength = todasLasRecetas.length;
-  todasLasRecetas = todasLasRecetas.filter(r => r.id !== id);
+//   const initialLength = todasLasRecetas.length;
+//   todasLasRecetas = todasLasRecetas.filter(r => r.id !== id);
 
-  if (todasLasRecetas.length < initialLength) {
-    alert('Receta eliminada.');
-    mostrarRecetasEnDOM(todasLasRecetas);
-  } else {
-    alert('Error al intentar eliminar la receta.');
-  }
-}
+//   if (todasLasRecetas.length < initialLength) {
+//     alert('Receta eliminada.');
+//     mostrarRecetasEnDOM(todasLasRecetas);
+//   } else {
+//     alert('Error al intentar eliminar la receta.');
+//   }
+// }
 
 
-// --- Funciones de Navegación y Visibilidad ---
+// document.getElementById('loginForm').addEventListener('submit', function (event) {
+//   event.preventDefault();
+//   const usuario = document.getElementById('usuarioLogin').value;
+//   const clave = document.getElementById('claveLogin').value;
 
-// --- Lógica de Registro y Login ---
+//   const usuarios = obtenerUsuarios();
 
-document.getElementById('registroForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-  const usuario = document.getElementById('usuarioRegistro').value;
-  const clave = document.getElementById('claveRegistro').value;
-  const email = document.getElementById('emailRegistro').value;
-
-  const usuarios = obtenerUsuarios();
-
-  if (usuarios[usuario]) {
-    alert('Ese nombre de usuario ya existe. Elige otro.');
-    return;
-  }
-
-  usuarios[usuario] = { clave: clave, email: email };
-  guardarUsuarios(usuarios);
-
-  alert(`¡Registro exitoso! Ya puedes iniciar sesión, ${usuario}.`);
-  mostrarSeccion('login');
-});
-
-document.getElementById('loginForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-  const usuario = document.getElementById('usuarioLogin').value;
-  const clave = document.getElementById('claveLogin').value;
-
-  const usuarios = obtenerUsuarios();
-
-  if (usuarios[usuario] && usuarios[usuario].clave === clave) {
-    usuarioLogueado = usuario;
-    alert(`¡Bienvenido de vuelta, ${usuario}!`);
-    mostrarSeccion('recetas');
-  } else {
-    alert('Credenciales incorrectas o usuario no registrado.');
-  }
-});
+//   if (usuarios[usuario] && usuarios[usuario].clave === clave) {
+//     usuarioLogueado = usuario;
+//     alert(`¡Bienvenido de vuelta, ${usuario}!`);
+//     mostrarSeccion('recetas');
+//   } else {
+//     alert('Credenciales incorrectas o usuario no registrado.');
+//   }
+// });
 
 // LÓGICA UNIFICADA DE GUARDAR Y MODIFICAR 
-document.getElementById('formReceta').addEventListener('submit', function (event) {
-  event.preventDefault();
+// document.getElementById('formReceta').addEventListener('submit', function (event) {
+//   event.preventDefault();
 
-  const id = document.getElementById('recetaId').value;
-  const nombre = document.getElementById('nombre').value.trim();
-  const imagen = document.getElementById('imagen').value.trim();
-  const desc = document.getElementById('desc').value.trim();
+//   const id = document.getElementById('recetaId').value;
+//   const nombre = document.getElementById('nombre').value.trim();
+//   const imagen = document.getElementById('imagen').value.trim();
+//   const desc = document.getElementById('desc').value.trim();
 
-  if (!nombre || !desc) {
-    alert('Por favor, ingresa el nombre y la descripción de la receta.');
-    return;
-  }
+//   if (!nombre || !desc) {
+//     alert('Por favor, ingresa el nombre y la descripción de la receta.');
+//     return;
+//   }
 
-  if (id) {
-    // --- MODO MODIFICAR ---
-    const index = todasLasRecetas.findIndex(r => r.id === parseInt(id));
-    if (index !== -1) {
-      todasLasRecetas[index].nombre = nombre;
-      todasLasRecetas[index].imagen = imagen || todasLasRecetas[index].imagen;
-      todasLasRecetas[index].desc = desc;
-      alert(`¡Receta "${nombre}" modificada exitosamente!`);
-    }
-  } else {
-    // --- MODO CREAR (Guardar) ---
-    const nuevaReceta = {
-      id: generarId(),
-      nombre: nombre,
-      imagen: imagen || 'https://source.unsplash.com/random/300x200/?food,cooking',
-      desc: desc
-    };
-    todasLasRecetas.push(nuevaReceta);
-    alert(`¡Receta "${nombre}" creada exitosamente!`);
-  }
+//   if (id) {
+//     // --- MODO MODIFICAR ---
+//     const index = todasLasRecetas.findIndex(r => r.id === parseInt(id));
+//     if (index !== -1) {
+//       todasLasRecetas[index].nombre = nombre;
+//       todasLasRecetas[index].imagen = imagen || todasLasRecetas[index].imagen;
+//       todasLasRecetas[index].desc = desc;
+//       alert(`¡Receta "${nombre}" modificada exitosamente!`);
+//     }
+//   } else {
+//     // --- MODO CREAR (Guardar) ---
+//     const nuevaReceta = {
+//       id: generarId(),
+//       nombre: nombre,
+//       imagen: imagen || 'https://source.unsplash.com/random/300x200/?food,cooking',
+//       desc: desc
+//     };
+//     todasLasRecetas.push(nuevaReceta);
+//     alert(`¡Receta "${nombre}" creada exitosamente!`);
+//   }
 
-  document.getElementById('formReceta').reset();
-  mostrarSeccion('recetas');
-});
-
+//   document.getElementById('formReceta').reset();
+//   mostrarSeccion('recetas');
+// });
 
 /**
  * Cierra la sesión y redirige a la pantalla de login.
  */
-function cerrarSesion() {
-  usuarioLogueado = null;
-  alert('Sesión cerrada.');
-  mostrarSeccion('login');
-}
-
-// --- Ejecución al cargar la página ---
-mostrarSeccion('recetas');
+// function cerrarSesion() {
+//   usuarioLogueado = null;
+//   alert('Sesión cerrada.');
+//   mostrarSeccion('login');
+// }

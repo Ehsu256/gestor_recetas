@@ -4,11 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GESTOR DE RECETAS | Regístrate</title>
-
-    <script src="../static/js/script.js"></script>
     <link href="../static/css/style.css" rel="stylesheet" />
   </head>
-
   <body>
     <header>
       <div class="header-content">
@@ -22,36 +19,26 @@
           </a>
         </div>
       </div>
-
       <nav>
         <div class="nav-links">
           <a href="index.html">Recetas</a>
         </div>
         <div class="nav-auth">
-          <a
-            href="registro.html"
-            id="navRegistroBtn"
-            style="background-color: var(--primary-red); color: white"
-            >Regístrate</a
-          >
+          <a href="registro.html" id="navRegistroBtn"
+          style="background-color: var(--primary-red); color: white">
+            Regístrate
+          </a>
         </div>
       </nav>
     </header>
-
     <main class="fade-in">
       <section id="registro">
         <h2>Crear Cuenta</h2>
         <form id="registroForm">
           <input
-            type="text"
-            id="usuarioRegistro"
-            placeholder="Nombre de Usuario"
-            required
-          />
-          <input
             type="email"
-            id="emailRegistro"
-            placeholder="Correo Electrónico"
+            id="correoRegistro"
+            placeholder="Correo electrónico"
             required
           />
           <input
@@ -62,9 +49,9 @@
           />
           <button type="submit">Registrarme</button>
         </form>
-
         <p>¿Ya tienes cuenta? <a href="login.html">Inicia Sesión</a></p>
       </section>
     </main>
+    <script src="../static/js/registro.js"></script>
   </body>
 </html>
