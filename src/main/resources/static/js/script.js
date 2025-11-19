@@ -15,11 +15,11 @@ async function cargarRecetas() {
   for (let i = 0; i < 12; i++) {
     const r = resultadoRecetas[i];
     todasLasRecetas.push({
-      id: r.id_receta ?? r.id,
-      nombre: r.nombre_receta ?? r.nombre ?? 'Sin nombre',
-      imagen: r.enlace ?? r.imagen ?? '',
-      ingredientes: r.ingredientes ?? r.desc ?? '',
-      instrucciones: r.instrucciones ?? r.pasos ?? ''
+      id: r.id_receta,
+      nombre: r.nombre_receta ?? 'Sin nombre',
+      imagen: r.enlace ?? '',
+      ingredientes: r.ingredientes ?? '',
+      instrucciones: r.instrucciones ?? ''
     });
   }
 
@@ -131,119 +131,3 @@ window.addEventListener('click', function (event) {
     closeModal();
   }
 });
-
-// --- Funciones CRUD (Modificar y Borrar) ---
-
-/**
- * Prepara el formulario para el modo CREACIÓN (Guardar).
- */
-// function prepararFormularioCreacion() {
-//   const form = document.getElementById('formReceta');
-//   document.getElementById('formTitle').textContent = 'Agregar Nueva Receta';
-//   document.getElementById('submitButton').textContent = 'Guardar';
-//   document.getElementById('recetaId').value = '';
-//   form.reset();
-//   form.style.display = 'flex';
-// }
-
-// function editarReceta(id) {
-//   const receta = todasLasRecetas.find(r => r.id === id);
-//   if (!receta) {
-//     alert('Receta no encontrada.');
-//     return;
-//   }
-
-//   const form = document.getElementById('formReceta');
-//   document.getElementById('formTitle').textContent = `Modificar Receta: ${receta.nombre}`;
-//   document.getElementById('submitButton').textContent = 'Guardar Cambios';
-
-//   // Rellenar formulario con datos de la receta
-//   document.getElementById('recetaId').value = receta.id;
-//   document.getElementById('nombre').value = receta.nombre;
-//   document.getElementById('imagen').value = receta.imagen;
-//   document.getElementById('desc').value = receta.desc.replace('...', '');
-
-//   form.style.display = 'flex';
-//   document.getElementById('recetas').scrollIntoView({ behavior: 'smooth' });
-// }
-
-// function borrarReceta(id) {
-//   if (!confirm('¿Estás seguro de que quieres borrar esta receta?')) {
-//     return;
-//   }
-
-//   const initialLength = todasLasRecetas.length;
-//   todasLasRecetas = todasLasRecetas.filter(r => r.id !== id);
-
-//   if (todasLasRecetas.length < initialLength) {
-//     alert('Receta eliminada.');
-//     mostrarRecetasEnDOM(todasLasRecetas);
-//   } else {
-//     alert('Error al intentar eliminar la receta.');
-//   }
-// }
-
-
-// document.getElementById('loginForm').addEventListener('submit', function (event) {
-//   event.preventDefault();
-//   const usuario = document.getElementById('usuarioLogin').value;
-//   const clave = document.getElementById('claveLogin').value;
-
-//   const usuarios = obtenerUsuarios();
-
-//   if (usuarios[usuario] && usuarios[usuario].clave === clave) {
-//     usuarioLogueado = usuario;
-//     alert(`¡Bienvenido de vuelta, ${usuario}!`);
-//     mostrarSeccion('recetas');
-//   } else {
-//     alert('Credenciales incorrectas o usuario no registrado.');
-//   }
-// });
-
-// LÓGICA UNIFICADA DE GUARDAR Y MODIFICAR 
-// document.getElementById('formReceta').addEventListener('submit', function (event) {
-//   event.preventDefault();
-
-//   const id = document.getElementById('recetaId').value;
-//   const nombre = document.getElementById('nombre').value.trim();
-//   const imagen = document.getElementById('imagen').value.trim();
-//   const desc = document.getElementById('desc').value.trim();
-
-//   if (!nombre || !desc) {
-//     alert('Por favor, ingresa el nombre y la descripción de la receta.');
-//     return;
-//   }
-
-//   if (id) {
-//     // --- MODO MODIFICAR ---
-//     const index = todasLasRecetas.findIndex(r => r.id === parseInt(id));
-//     if (index !== -1) {
-//       todasLasRecetas[index].nombre = nombre;
-//       todasLasRecetas[index].imagen = imagen || todasLasRecetas[index].imagen;
-//       todasLasRecetas[index].desc = desc;
-//       alert(`¡Receta "${nombre}" modificada exitosamente!`);
-//     }
-//   } else {
-//     // --- MODO CREAR (Guardar) ---
-//     const nuevaReceta = {
-//       id: generarId(),
-//       nombre: nombre,
-//       imagen: imagen || 'https://source.unsplash.com/random/300x200/?food,cooking',
-//       desc: desc
-//     };
-//     todasLasRecetas.push(nuevaReceta);
-//     alert(`¡Receta "${nombre}" creada exitosamente!`);
-//   }
-
-//   document.getElementById('formReceta').reset();
-//   mostrarSeccion('recetas');
-// });
-
-/**
- * Cierra la sesión y redirige a la pantalla de login.
- */
-// function cerrarSesion() {
-//   usuarioLogueado = null;
-//   alert('Sesión cerrada.');
-//   mostrarSeccion('login');
-// }
