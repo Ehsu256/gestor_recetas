@@ -1,9 +1,14 @@
 :root {
-    --primary-red: #B31B1B; /* Rojo principal de la marca */
-    --secondary-yellow: #FFD700; /* Amarillo acento (botones, estrellas) */
-    --tertiary-black: #222222; /* Negro para header y texto oscuro */
-    --light-bg: #fdfdfd; /* Fondo claro para main (contenedores) */
-    --neon-red-glow: #ff4d4d; /* Rojo para neón */
+  --primary-red: #B31B1B;
+  /* Rojo principal de la marca */
+  --secondary-yellow: #FFD700;
+  /* Amarillo acento (botones, estrellas) */
+  --tertiary-black: #222222;
+  /* Negro para header y texto oscuro */
+  --light-bg: #fdfdfd;
+  /* Fondo claro para main (contenedores) */
+  --neon-red-glow: #ff4d4d;
+  /* Rojo para neón */
 }
 
 /* ==================================== */
@@ -11,37 +16,40 @@
 /* ==================================== */
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: var(--tertiary-black); 
-    position: relative;
-    min-height: 100vh;
-    background-color: var(--tertiary-black); 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--tertiary-black);
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--tertiary-black);
 }
 
 /* Capa de fondo con efecto de desenfoque/opacidad */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); 
-    -webkit-backdrop-filter: blur(5px); 
-    backdrop-filter: blur(5px); 
-    z-index: -1; 
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 /* --- ANIMACIÓN NEÓN SUAVE --- */
 @keyframes neon-pulse {
-    0%, 100% { 
-        text-shadow: 0 0 1px #fff, 0 0 5px var(--neon-red-glow), 0 0 10px var(--neon-red-glow);
-    }
-    50% { 
-        text-shadow: 0 0 1px #fff, 0 0 8px var(--neon-red-glow), 0 0 15px var(--neon-red-glow);
-    }
+
+  0%,
+  100% {
+    text-shadow: 0 0 1px #fff, 0 0 5px var(--neon-red-glow), 0 0 10px var(--neon-red-glow);
+  }
+
+  50% {
+    text-shadow: 0 0 1px #fff, 0 0 8px var(--neon-red-glow), 0 0 15px var(--neon-red-glow);
+  }
 }
 
 /* ==================================== */
@@ -49,96 +57,106 @@ body::before {
 /* ==================================== */
 
 header {
-    background-color: var(--tertiary-black); 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
-    transition: box-shadow 0.3s;
-    z-index: 10;
-    position: sticky; 
-    top: 0;
+  background-color: var(--tertiary-black);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s;
+  z-index: 10;
+  position: sticky;
+  top: 0;
 }
 
 .header-content {
-    padding: 10px 30px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.logo-area a { 
-    text-decoration: none;
-    color: white; 
-    display: flex;
-    align-items: center;
+.logo-area a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
 }
 
-#dynamicFoodLogo { 
-    width: 30px; 
-    height: 30px;
-    margin-right: 8px; 
-    /* Estilo para un logo SVG en blanco/gris suave */
-    filter: invert(100%) grayscale(50%) brightness(1.5); 
-    transition: filter 0.3s;
+#dynamicFoodLogo {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  /* Estilo para un logo SVG en blanco/gris suave */
+  filter: invert(100%) grayscale(50%) brightness(1.5);
+  transition: filter 0.3s;
 }
 
 .logo-area h1 {
-    font-size: 1.8em; 
-    margin: 0;
-    font-weight: 800;
-    letter-spacing: 1px;
-    display: flex;
+  font-size: 1.8em;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: flex;
 }
 
 /* Efecto Neón en "RECETAS" */
 .logo-part-1 {
-    color: white; 
+  color: white;
 }
+
 .logo-part-2 {
-    color: var(--primary-red); 
-    margin-left: 5px;
-    padding: 0 5px;
-    animation: neon-pulse 2s infinite alternate; 
-    text-shadow: 0 0 1px #fff;
-    transition: all 0.3s;
+  color: var(--primary-red);
+  margin-left: 5px;
+  padding: 0 5px;
+  animation: neon-pulse 2s infinite alternate;
+  text-shadow: 0 0 1px #fff;
+  transition: all 0.3s;
 }
 
 /* NAV BAR */
 nav {
-    padding: 0 30px;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    background-color: var(--tertiary-black); /* Asegura que la barra de nav sea negra */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-nav a {
-    background: none;
-    border: none;
-    color: #ffffff;
-    padding: 10px 18px; 
-    cursor: pointer;
-    font-weight: 600;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s, color 0.3s;
-}
-nav a:hover {
-    background-color: var(--primary-red); 
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--tertiary-black);
+  /* Asegura que la barra de nav sea negra */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.nav-links, .nav-auth {
-    display: flex;
-    align-items: center;
+nav a {
+  background: none;
+  border: none;
+  color: #ffffff;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background-color: var(--primary-red);
+}
+
+.nav-links,
+.nav-auth {
+  display: flex;
+  align-items: center;
 }
 
 /* Estilo para el botón o enlace activo de acento */
-#navLoginBtn, #navRegistroBtn, #navCrearEditarBtn {
-    background-color: var(--secondary-yellow);
-    color: var(--tertiary-black); 
-    font-weight: bold;
+#navLoginBtn,
+#navRegistroBtn,
+#navCrearEditarBtn {
+  background-color: var(--secondary-yellow);
+  color: var(--tertiary-black);
+  font-weight: bold;
 }
-#navLoginBtn:hover, #navRegistroBtn:hover, #navCrearEditarBtn:hover {
-    background-color: var(--primary-red);
-    color: white;
+
+#navLoginBtn:hover,
+#navRegistroBtn:hover,
+#navCrearEditarBtn:hover {
+  background-color: var(--primary-red);
+  color: white;
 }
 
 /* ==================================== */
@@ -146,32 +164,36 @@ nav a:hover {
 /* ==================================== */
 
 main {
-    padding: 40px;
-    max-width: 1200px;
-    margin: 40px auto;
-    background-color: var(--light-bg); 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column; /* Cambiado a columna para apilar secciones */
-    align-items: center; /* Centra el contenido como h2 y formularios */
+  padding: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: var(--light-bg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  /* Cambiado a columna para apilar secciones */
+  align-items: center;
+  /* Centra el contenido como h2 y formularios */
 }
 
 h2 {
-    color: var(--primary-red);
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-    font-size: 2em;
-    font-weight: 600;
-    border-left: 5px solid var(--secondary-yellow); 
-    padding-left: 15px;
-    text-transform: none; 
-    transition: color 0.3s;
-    width: 100%; /* Para que ocupe todo el ancho del contenedor */
-    max-width: 450px; /* Limita el ancho en páginas de formulario */
-    text-align: left;
+  color: var(--primary-red);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  font-size: 2em;
+  font-weight: 600;
+  border-left: 5px solid var(--secondary-yellow);
+  padding-left: 15px;
+  text-transform: none;
+  transition: color 0.3s;
+  width: 100%;
+  /* Para que ocupe todo el ancho del contenedor */
+  max-width: 450px;
+  /* Limita el ancho en páginas de formulario */
+  text-align: left;
 }
 
 /* ==================================== */
@@ -179,71 +201,75 @@ h2 {
 /* ==================================== */
 
 .search-and-controls {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .search-area {
-    display: flex; 
-    gap: 15px; 
-    margin-bottom: 30px; 
-    align-items: center; 
-    flex-wrap: wrap; 
-    width: 100%;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .search-area input {
-    flex-grow: 1; 
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: box-shadow 0.3s;
-    min-width: 150px;
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+  min-width: 150px;
 }
 
 .search-area button,
 .search-area .action-btn,
 #logoutBtn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s, opacity 0.3s;
-    text-decoration: none; /* Para enlaces como "Crear Receta" */
-    display: block;
-    text-align: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, opacity 0.3s;
+  text-decoration: none;
+  /* Para enlaces como "Crear Receta" */
+  display: block;
+  text-align: center;
 }
 
 .search-area button {
-    background-color: var(--secondary-yellow); 
-    color: var(--tertiary-black); 
+  background-color: var(--secondary-yellow);
+  color: var(--tertiary-black);
 }
+
 .search-area button:hover {
-    background-color: var(--primary-red);
-    color: white;
-    transform: translateY(-2px);
+  background-color: var(--primary-red);
+  color: white;
+  transform: translateY(-2px);
 }
 
 /* Botón Crear Receta (a) */
-.search-area .action-btn { 
-    background-color: var(--primary-red);
-    color: white;
+.search-area .action-btn {
+  background-color: var(--primary-red);
+  color: white;
 }
+
 .search-area .action-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
 #logoutBtn {
-    background-color: var(--tertiary-black);
-    color: white;
-    margin-bottom: 20px;
+  background-color: var(--tertiary-black);
+  color: white;
+  margin-bottom: 20px;
 }
+
 #logoutBtn:hover {
-    background-color: var(--primary-red);
+  background-color: var(--primary-red);
 }
 
 /* ==================================== */
@@ -251,94 +277,105 @@ h2 {
 /* ==================================== */
 
 /* Contenedores para login y registro (centrado en main) */
-#login, #registro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+#login,
+#registro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 /* Estilo común para todos los formularios */
-#loginForm, #registroForm, #formReceta {
-    display: flex; 
-    flex-direction: column;
-    gap: 15px;
-    padding: 30px;
-    border: 1px solid #ddd; 
-    border-radius: 12px; 
-    background-color: #ffffff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); 
-    max-width: 450px; 
-    width: 100%;
+#loginForm,
+#registroForm,
+#formReceta {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  max-width: 450px;
+  width: 100%;
 }
 
 /* Estilo de Inputs y Textareas */
-#loginForm input, #registroForm input, 
-#formReceta input, #formReceta textarea {
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    font-size: 1em;
+#loginForm input,
+#registroForm input,
+#formReceta input,
+#formReceta textarea {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-size: 1em;
 }
 
 /* Efecto Foco */
-#loginForm input:focus, #registroForm input:focus, 
-#formReceta input:focus, #formReceta textarea:focus {
-    border-color: var(--primary-red);
-    box-shadow: 0 0 5px rgba(179, 27, 27, 0.2);
-    outline: none; 
+#loginForm input:focus,
+#registroForm input:focus,
+#formReceta input:focus,
+#formReceta textarea:focus {
+  border-color: var(--primary-red);
+  box-shadow: 0 0 5px rgba(179, 27, 27, 0.2);
+  outline: none;
 }
 
 /* Estilo del botón principal de formularios (Entrar, Registrarme, Guardar) */
-#loginForm button[type="submit"], 
+#loginForm button[type="submit"],
 #registroForm button[type="submit"],
 #formReceta button[type="submit"] {
-    background-color: var(--primary-red); 
-    color: white;
-    padding: 12px 25px; 
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: 700;
-    transition: background-color 0.2s, transform 0.2s;
-    border: none;
-    cursor: pointer;
+  background-color: var(--primary-red);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 700;
+  transition: background-color 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
 }
 
-#loginForm button[type="submit"]:hover, 
+#loginForm button[type="submit"]:hover,
 #registroForm button[type="submit"]:hover,
 #formReceta button[type="submit"]:hover {
-    background-color: #a01a1a; 
-    transform: translateY(-1px);
+  background-color: #a01a1a;
+  transform: translateY(-1px);
 }
 
 /* Botón 'Cancelar' en Formulario de Receta */
 #formReceta button[type="button"] {
-    background-color: #ddd;
-    color: var(--tertiary-black);
-    padding: 12px 25px; 
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: 700;
-    transition: background-color 0.2s, transform 0.2s;
-    border: none;
-    cursor: pointer;
+  background-color: #ddd;
+  color: var(--tertiary-black);
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 700;
+  transition: background-color 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
 }
+
 #formReceta button[type="button"]:hover {
-    background-color: #bbb;
+  background-color: #bbb;
 }
 
 
 /* Enlaces de cambio de sección (Login/Registro) */
-#login p a, #registro p a {
-    color: var(--primary-red); 
-    text-decoration: none; 
-    font-weight: 600;
-    transition: color 0.3s, text-decoration 0.3s;
+#login p a,
+#registro p a {
+  color: var(--primary-red);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s, text-decoration 0.3s;
 }
-#login p a:hover, #registro p a:hover {
-    color: var(--tertiary-black); 
-    text-decoration: underline; 
+
+#login p a:hover,
+#registro p a:hover {
+  color: var(--tertiary-black);
+  text-decoration: underline;
 }
 
 
@@ -347,137 +384,141 @@ h2 {
 /* ==================================== */
 
 #recetas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 25px; 
-    margin-top: 30px;
-    width: 100%; 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  width: 100%;
 }
 
 .receta-card {
-    background-color: #ffffff; 
-    border: 1px solid #eee; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
-    overflow: hidden; 
-    display: flex; 
-    flex-direction: column; 
-    padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .receta-card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .receta-card img {
-    width: 100%;
-    height: 180px; 
-    object-fit: cover; 
-    display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
 }
 
 .card-content-wrapper {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; 
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .receta-card h3 {
-    color: var(--tertiary-black);
-    font-size: 1.1em; 
-    font-weight: 700;
-    margin: 0 0 5px 0;
-    border-bottom: none; 
-    text-align: left; 
+  color: var(--tertiary-black);
+  font-size: 1.1em;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  border-bottom: none;
+  text-align: left;
 }
 
 .receta-card p {
-    font-size: 0.9em; 
-    line-height: 1.4;
-    color: #666;
-    margin-bottom: 10px; 
-    flex-grow: 1; 
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: #666;
+  margin-bottom: 10px;
+  flex-grow: 1;
 }
 
 /* --- CALIFICACIÓN POR ESTRELLAS --- */
 
 .rating-stars {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    margin-top: 5px; 
-    margin-bottom: 10px; 
-    font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
 }
 
 .star {
-    cursor: pointer;
-    color: #ccc; 
-    transition: color 0.2s, transform 0.1s;
-    
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s, transform 0.1s;
+
 }
 
 /* Estilos de las estrellas: llenas y con interacción */
 .star.active,
 .star:hover,
-.star:hover ~ .star {
-    color: var(--secondary-yellow); 
+.star:hover~.star {
+  color: var(--secondary-yellow);
 }
 
 /* Lógica de hover sobre el contenedor */
 .rating-stars:hover .star {
-    color: var(--secondary-yellow);
+  color: var(--secondary-yellow);
 }
 
-.rating-stars:hover .star:hover ~ .star {
-    color: #ccc; 
+.rating-stars:hover .star:hover~.star {
+  color: #ccc;
 }
-.rating-stars:hover .star:hover ~ .star.active {
-    color: #ccc;
+
+.rating-stars:hover .star:hover~.star.active {
+  color: #ccc;
 }
 
 /* --- BOTONES DE ACCIÓN (Modificar/Eliminar) --- */
 
 .card-actions {
-    margin-top: auto; 
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-    display: flex; 
-    gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 8px;
 }
 
 .action-btn {
-    padding: 8px 15px; 
-    font-size: 0.85em; 
-    border-radius: 4px;
-    font-weight: 600;
-    flex-grow: 1;
-    transition: background-color 0.3s, color 0.3s;
-    text-decoration: none; /* Para enlaces */
-    text-align: center;
+  padding: 8px 15px;
+  font-size: 0.85em;
+  border-radius: 4px;
+  font-weight: 600;
+  flex-grow: 1;
+  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+  /* Para enlaces */
+  text-align: center;
 }
 
 .modify-btn {
-    background-color: var(--secondary-yellow); 
-    color: var(--tertiary-black);
-    border: none;
+  background-color: var(--secondary-yellow);
+  color: var(--tertiary-black);
+  border: none;
 }
+
 .modify-btn:hover {
-    background-color: var(--primary-red); 
-    color: white;
+  background-color: var(--primary-red);
+  color: white;
 }
 
 .delete-btn {
-    background-color: #ddd; 
-    color: var(--tertiary-black);
-    border: none;
+  background-color: #ddd;
+  color: var(--tertiary-black);
+  border: none;
 }
+
 .delete-btn:hover {
-    background-color: var(--primary-red); 
-    color: white;
+  background-color: var(--primary-red);
+  color: white;
 }
 
 
@@ -485,45 +526,93 @@ h2 {
 /* RESPONSIVENESS              */
 /* ==================================== */
 @media (max-width: 768px) {
-    main {
-        padding: 20px;
-        margin: 20px auto;
-    }
-    .header-content {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px 20px;
-    }
-    nav {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-    }
-    .nav-links, .nav-auth {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-    nav a {
-        width: 100%; 
-        padding: 12px 18px;
-        text-align: center;
-    }
-    .search-area {
-        flex-direction: column; 
-    }
-    .search-area button, 
-    .search-area input,
-    .search-area .action-btn,
-    #logoutBtn {
-        width: 100%;
-        margin-top: 10px;
-    }
-    /* Los formularios en móvil ocupan casi todo el ancho */
-    #loginForm, #registroForm, #formReceta {
-        max-width: 100%;
-    }
-    #recetas {
-        grid-template-columns: 1fr; /* Columna única en móviles */
-    }
+  main {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .nav-links,
+  .nav-auth {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    width: 100%;
+    padding: 12px 18px;
+    text-align: center;
+  }
+
+  .search-area {
+    flex-direction: column;
+  }
+
+  .search-area button,
+  .search-area input,
+  .search-area .action-btn,
+  #logoutBtn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* Los formularios en móvil ocupan casi todo el ancho */
+  #loginForm,
+  #registroForm,
+  #formReceta {
+    max-width: 100%;
+  }
+
+  #recetas {
+    grid-template-columns: 1fr;
+    /* Columna única en móviles */
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 6% auto;
+  padding: 20px;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal .close {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin-bottom: 12px;
 }
