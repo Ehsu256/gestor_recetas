@@ -6,6 +6,7 @@ document.getElementById('formReceta').addEventListener('submit', async (event) =
   const nombre = document.getElementById('nombre').value;
   const ingredientes = document.getElementById('ingredientes').value;
   const instrucciones = document.getElementById('instrucciones').value;
+  const imagen = document.getElementById('imagen').value;
 
   const respuestaCrearReceta = await fetch('http://localhost:8080/api/recetas', {
     method: 'POST',
@@ -15,8 +16,8 @@ document.getElementById('formReceta').addEventListener('submit', async (event) =
       nombre_receta: nombre,
       ingredientes: ingredientes,
       instrucciones: instrucciones,
-      ner: null,
-      enlace: null
+      enlace: imagen,
+      ner: null
     })
   });
   const resultadoCrearReceta = await respuestaCrearReceta.json();

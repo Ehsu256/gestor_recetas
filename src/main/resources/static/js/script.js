@@ -14,7 +14,7 @@ async function cargarRecetas() {
     todasLasRecetas[i] = {
       id: resultadoRecetas[i].id_receta,
       nombre: resultadoRecetas[i].nombre_receta,
-      imagen: 'https://cdn.sanity.io/images/nxpteyfv/goguides/8b59d83bc54602dee6db6b670971652fbe07f3a0-1600x1066.jpg?fp-x=0.5&fp-y=0.5&w=1351&fit=max&auto=format',
+      imagen: resultadoRecetas[i].enlace,
       desc: resultadoRecetas[i].ingredientes
     } 
   }
